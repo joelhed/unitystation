@@ -120,8 +120,8 @@ public class CentComm : MonoBehaviour
 			if (p.Script == null || p.Script.playerHealth == null || p.Script.playerHealth.IsDead) continue;
 
 			if (p.Job == JobType.SECURITY_OFFICER || p.Job == JobType.HOS
-			                                      || p.Job != JobType.DETECTIVE
-			                                      || p.Job != JobType.WARDEN)
+			                                      || p.Job == JobType.DETECTIVE
+			                                      || p.Job == JobType.WARDEN)
 			{
 				UpdateChatMessage.Send(p.GameObject, ChatChannel.System, ChatModifier.None,
 					"<color=red><size=50><b>Attention! It is believed that some of the crew on-station may be planning to stage a coup!</b></size></color>");
