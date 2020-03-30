@@ -53,7 +53,6 @@ public class Paper : NetworkBehaviour
 
 	public override void OnStartClient()
 	{
-		EnsureInit();
 		UpdateState(spriteState, spriteState);
 	}
 
