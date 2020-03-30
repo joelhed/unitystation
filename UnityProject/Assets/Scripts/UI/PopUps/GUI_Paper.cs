@@ -64,17 +64,8 @@ public class GUI_Paper : NetTab
 
 	private bool IsPenInHand()
 	{
-		var pen = UIManager.Hands.CurrentSlot.Item?.GetComponent<Pen>();
-		if (pen == null)
-		{
-			pen = UIManager.Hands.OtherSlot.Item?.GetComponent<Pen>();
-			if (pen == null)
-			{
-				//no pen
-				return false;
-			}
-		}
-		return true;
+		return UIManager.Hands.CurrentSlot.Item?.GetComponent<Pen>() != null
+			|| UIManager.Hands.OtherSlot.Item?.GetComponent<Pen>() != null;
 	}
 
 	//Safety measure:

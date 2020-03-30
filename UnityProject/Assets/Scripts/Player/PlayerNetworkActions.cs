@@ -559,16 +559,12 @@ public partial class PlayerNetworkActions : NetworkBehaviour
 		if (leftHand.Item?.gameObject == paper || rightHand.Item?.gameObject == paper)
 		{
 			var paperComponent = paper.GetComponent<Paper>();
-			var pen = leftHand.Item?.GetComponent<Pen>();
-			if (pen == null)
+			if (leftHand.Item?.GetComponent<Pen>() == null &&
+				rightHand.Item?.GetComponent<Pen>() == null)
 			{
-				pen = rightHand.Item?.GetComponent<Pen>();
-				if (pen == null)
-				{
-					//no pen
-					paperComponent.UpdatePlayer(gameObject); //force server string to player
-					return;
-				}
+				//no pen
+				paperComponent.UpdatePlayer(gameObject); //force server string to player
+				return;
 			}
 
 			if (paperComponent != null)
