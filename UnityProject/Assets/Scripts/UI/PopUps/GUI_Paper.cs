@@ -55,6 +55,7 @@ public class GUI_Paper : NetTab
 		}
 		else
 		{
+			textField.interactable = false;
 			DisableEditing();
 		}
 	}
@@ -76,7 +77,6 @@ public class GUI_Paper : NetTab
 
 	private void DisableEditing()
 	{
-		textField.interactable = false;
 		UIManager.IsInputFocus = false;
 		UIManager.PreventChatInput = false;
 	}
