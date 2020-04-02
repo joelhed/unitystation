@@ -103,25 +103,43 @@ public class GUI_Paper : NetTab
 
 	public void OnTextValueChange()
 	{
-		Debug.Log("OnTextValueChange (disabled)");
-		return;
+		Debug.Log("OnTextValueChange: rendered height " + textField.textComponent.renderedHeight
+			+ " is truncated " + textField.textComponent.isTextTruncated);
 		//Only way to refresh it to get it to do its job (unity bug):
+		/*
 		contentSizeFitter.enabled = false;
 		contentSizeFitter.enabled = true;
-		/*if (!textField.placeholder.enabled)
-		{
-			CheckLineLimit();
-		}*/
+		*/
+		CheckLineLimit();
 	}
-	/*
+
 	private void CheckLineLimit()
 	{
+		if (textField.placeholder.enabled || !textField.textComponent.isTextTruncated)
+		{
+			return;
+		}
+
+		// also guard for when the text isn't truncated.
+
+		// iterate through the line info
+		TMP_LineInfo[] lineInfos = textField.textComponent.textInfo.lineInfo;
+		for (int i = 0; i < lineInfos.Length; i++)
+		{
+			var info = lineInfos[i];
+			if (info.lineHeight < 20f)
+			{
+				Debug.Log("line " + i + " has height" + info.lineHeight);
+			}
+		}
+
+		/*
 		Canvas.ForceUpdateCanvases();
 		if (textField.textComponent.cachedTextGenerator.lineCount > 20)
 		{
 			var sub = textField.text.Substring(0, textField.text.Length - 1);
 			textField.text = sub;
 		}
+		*/
 	}
-	*/
 }
