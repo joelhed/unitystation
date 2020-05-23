@@ -122,6 +122,14 @@ public class GUI_Paper : NetTab
 
 		// also guard for when the text isn't truncated.
 
+		// TMP_Text.isTextOverflowing: Indicates if the text exceeds the vertical bounds of its text container.
+		// TMP_Text.isTextTruncated: Property indicating whether the text is Truncated or using Ellipsis.
+		// TMP_Text.maxHeight
+		// TMP_Text.maxVisibleCharacters: Allows to control how many characters are visible from the input.
+		// TMP_Text.maxVisibleLines: Allows control over how many lines of text are displayed.
+		// TMP_Text.GetParsedText(): Function which returns the text after it has been parsed and rich text tags removed.
+		// TMP_Text.renderedHeight: Compute the rendered height of the text object.
+
 		// iterate through the line info
 		TMP_LineInfo[] lineInfos = textField.textComponent.textInfo.lineInfo;
 		for (int i = 0; i < lineInfos.Length; i++)
